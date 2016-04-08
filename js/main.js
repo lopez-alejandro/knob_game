@@ -7,6 +7,10 @@
 6. game logic
  */
 $(function(){
+
+  var updatePosition = function(v){
+    $('#character').css('left', v);
+  }
   $(".dial").knob({
       'change' : function (v) { console.log(v);
       // var currentPosition =$('#character').css('left');
