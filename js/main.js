@@ -7,7 +7,12 @@
 6. game logic
  */
 $(function(){
-//  $(".dial").knob();
+  $(".dial").knob({
+      'change' : function (v) { console.log(v);
+      // var currentPosition =$('#character').css('left');
+      // currentPosition = parseInt(currentPosition);
+      $('#character').css('left', v) }
+  });
   $(window).on('keydown', function(e){
     var key = e.keyCode;
     if(key == 39){

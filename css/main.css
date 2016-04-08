@@ -13,3 +13,9 @@ body{
   top: 500px;
   left: 300px;
 }
+
+#control_div {
+  position: absolute;
+  left:300px;
+  top:100px;
+}
