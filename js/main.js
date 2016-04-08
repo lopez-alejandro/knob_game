@@ -8,14 +8,12 @@
  */
 $(function(){
 
-  var updatePosition = function(v){
-    $('#character').css('left', v);
-  }
   $(".dial").knob({
-      'change' : function (v) { console.log(v);
+      'change' : function (v) {
+        console.log(v);
       // var currentPosition =$('#character').css('left');
       // currentPosition = parseInt(currentPosition);
-      $('#character').css('left', v) }
+      $('#character').css('left', v*10) }
   });
   $(window).on('keydown', function(e){
     var key = e.keyCode;

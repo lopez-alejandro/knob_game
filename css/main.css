@@ -1,7 +1,4 @@
-body{
-  padding: 0;
-  margin: 0;
-}
+
 
 #character{
   display: block;
@@ -15,7 +12,27 @@ body{
 }
 
 #control_div {
-  position: absolute;
+/*  position: absolute;
   left:300px;
-  top:100px;
+  top:100px;*/
+  border-left: 3px solid black;
+  text-align: center;
+}
+
+.col-md-4 {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
 }
