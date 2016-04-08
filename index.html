@@ -2,10 +2,23 @@
 <html>
   <head>
     <title>Knob Game</title>
+
+    <script src="http://code.jquery.com/jquery-1.12.2.js"></script>
+    <script src="jquery.knob.js"></script>
+
+    <script>
+	    $(function() {
+	        $(".dial").knob();
+	    });
+	</script>
+
   </head>
   <body>
     <p>
       hello world
     </p>
+
+    <input type="text" value="75" class="dial">
+
   </body>
 </html>
