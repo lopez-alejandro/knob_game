@@ -6,7 +6,41 @@
 5. make collisions
 6. game logic
  */
+
+
 $(function(){
+  var objects = [];
+  var counter = 0;
+  var makeObject = function(){
+    console.log('make object');
+    var x = Math.random() * 500;
+    console.log(x);
+
+    /*
+          var newObject = {
+            xPos: x,
+            yPos: 0,
+            id: counter++,
+          };
+          objects.push(newObject);
+          */
+    $('#game_container').append("<div class='falling_object' id="+counter + " ></div>");
+    $("#" + counter +"").css('left', x);
+    $("#" +counter +"").css('top', 200);
+    counter++;
+
+  }
+  var moveObjects = function(){
+    $('.falling_object').each(function(index){
+      var curTop = $(this).css('top');
+      curTop = parseInt(curTop);
+      $(this).css('top', curTop + 10);
+    });
+  }
+  setInterval(makeObject, 1500);
+
+
+  setInterval(moveObjects, 500);
 
   $(".dial").knob({
       'change' : function (v) {
