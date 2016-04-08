@@ -1,0 +1,15 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+#character{
+  display: block;
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: red;
+  position: absolute;
+  top: 500px;
+  left: 300px;
+}
