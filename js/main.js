@@ -44,17 +44,21 @@ $(function(){
       var curLeft = $(this).css('left');
       curLeft = parseInt(curLeft);
       curTop = parseInt(curTop);
+      var curBot = curTop + 50;
       console.log(curTop);
       var charLeft = $('#character').css('left');
       charLeft = parseInt(charLeft);
-      if(curTop >= 400 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
+      if(curBot >= 500 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
         // collision
-        stopTimer(makeId);
-        stopTimer(boundaryId);
-        stopTimer(moveId);
+        if (!$(this).hasClass('deleted')) {
+          stopTimer(makeId);
+          stopTimer(boundaryId);
+          stopTimer(moveId);
+        }
+
         
       }
-      if(curTop >= 400){
+      if(curTop >= 425){
         $("#"+index).fadeOut('fast');
         $('#'+index).addClass('deleted');
       }
