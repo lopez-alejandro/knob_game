@@ -9,6 +9,7 @@
   position: absolute;
   top: 500px;
   left: 300px;
+  transition: all .1s linear;
 }
 
 #control_div {
@@ -24,6 +25,7 @@
   width: 25px;
   height: 50px;
   position: absolute;
+  transition: all 1s linear;
 }
 
 .col-md-4 {

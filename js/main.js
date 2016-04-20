@@ -34,17 +34,45 @@ $(function(){
     $('.falling_object').each(function(index){
       var curTop = $(this).css('top');
       curTop = parseInt(curTop);
-      $(this).css('top', curTop + 10);
+      $(this).css('top', curTop + 200);
     });
   }
-  setInterval(makeObject, 1500);
 
+  var checkBoundaries= function(){
+    $('.falling_object').each(function(index){
+      var curTop = $(this).css('top');
+      var curLeft = $(this).css('left');
+      curLeft = parseInt(curLeft);
+      curTop = parseInt(curTop);
+      console.log(curTop);
+      var charLeft = $('#character').css('left');
+      charLeft = parseInt(charLeft);
+      if(curTop >= 400 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
+        // collision
+        stopTimer(makeId);
+        stopTimer(boundaryId);
+        stopTimer(moveId);
+        
+      }
+      if(curTop >= 400){
+        $("#"+index).fadeOut('fast');
+        $('#'+index).addClass('deleted');
+      }
+    });
+  }
 
-  setInterval(moveObjects, 500);
+  var stopTimer = function(timerId){
+    clearInterval(timerId);
+    timerId = undefined;
+  }
+  var makeId = setInterval(makeObject, 1000);
+  var boundaryId = setInterval(checkBoundaries, 500);
+
+  var moveId = setInterval(moveObjects, 500);
 
   $(".dial").knob({
       'change' : function (v) {
-        console.log(v);
+
       // var currentPosition =$('#character').css('left');
       // currentPosition = parseInt(currentPosition);
       $('#character').css('left', v*10) }

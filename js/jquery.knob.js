@@ -312,7 +312,7 @@
             s.clear();
 
             s.dH && (d = s.dH());
-            console.log("this is the v in _draw: ", this.cv);
+
             this.cH(this.cv);
             d !== false && s.draw();
         };
@@ -329,7 +329,7 @@
 
                 if (s.cH && s.cH(v) === false) return;
 
-                console.log("this is the v in _touch: ", v);
+
 
                 s.change(s._validate(v));
                 s._draw();
@@ -358,7 +358,7 @@
         this._mouse = function (e) {
             var mouseMove = function (e) {
                 var v = s.xy2val(e.pageX, e.pageY);
-                console.log("this is the v in _mouse: ", v);
+                
                 if (v == s.cv) return;
 
                 if (s.cH && (s.cH(v) === false)) return;
