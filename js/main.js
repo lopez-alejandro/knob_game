@@ -11,10 +11,10 @@
 $(function(){
   var objects = [];
   var counter = 0;
+  var isAlive = true;
   var makeObject = function(){
-    console.log('make object');
+
     var x = Math.random() * 500;
-    console.log(x);
 
     /*
           var newObject = {
@@ -45,7 +45,7 @@ $(function(){
       curLeft = parseInt(curLeft);
       curTop = parseInt(curTop);
       var curBot = curTop + 50;
-      console.log(curTop);
+
       var charLeft = $('#character').css('left');
       charLeft = parseInt(charLeft);
       if(curBot >= 500 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
@@ -54,11 +54,12 @@ $(function(){
           stopTimer(makeId);
           stopTimer(boundaryId);
           stopTimer(moveId);
+          isAlive = false;
         }
 
-        
+
       }
-      if(curTop >= 425){
+      if(curBot >= 500){
         $("#"+index).fadeOut('fast');
         $('#'+index).addClass('deleted');
       }
@@ -70,7 +71,7 @@ $(function(){
     timerId = undefined;
   }
   var makeId = setInterval(makeObject, 1000);
-  var boundaryId = setInterval(checkBoundaries, 500);
+  var boundaryId = setInterval(checkBoundaries, 20);
 
   var moveId = setInterval(moveObjects, 500);
 
@@ -79,8 +80,11 @@ $(function(){
 
       // var currentPosition =$('#character').css('left');
       // currentPosition = parseInt(currentPosition);
-      $('#character').css('left', v*10) }
+      if(isAlive){
+        $('#character').css('left', v*10) }
+      }
   });
+  /*
   $(window).on('keydown', function(e){
     var key = e.keyCode;
     if(key == 39){
@@ -98,4 +102,5 @@ $(function(){
       $('#character').css('left', currentRight - 5);
     }
   });
+  */
 });
