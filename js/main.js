@@ -12,6 +12,10 @@ $(function(){
   var objects = [];
   var counter = 0;
   var isAlive = true;
+  var makeId = 0;
+  var boundaryId = 0;
+  var moveId = 0;
+
   var makeObject = function(){
 
     var x = Math.random() * 500;
@@ -51,10 +55,8 @@ $(function(){
       if(curBot >= 500 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
         // collision
         if (!$(this).hasClass('deleted')) {
-          stopTimer(makeId);
-          stopTimer(boundaryId);
-          stopTimer(moveId);
-          isAlive = false;
+          // stop the game now
+          stopGame();
         }
 
 
@@ -64,16 +66,28 @@ $(function(){
         $('#'+index).addClass('deleted');
       }
     });
+
   }
+
 
   var stopTimer = function(timerId){
     clearInterval(timerId);
     timerId = undefined;
   }
-  var makeId = setInterval(makeObject, 1000);
-  var boundaryId = setInterval(checkBoundaries, 20);
 
-  var moveId = setInterval(moveObjects, 500);
+  var stopAllTimers = function(){
+    stopTimer(makeId);
+    stopTimer(boundaryId);
+    stopTimer(moveId);
+  }
+
+
+  var startAllTimers = function(){
+    makeId = setInterval(makeObject, 1000);
+    boundaryId = setInterval(checkBoundaries, 20);
+    moveId = setInterval(moveObjects, 500);
+  }
+
 
   $(".dial").knob({
       'change' : function (v) {
@@ -83,6 +97,28 @@ $(function(){
       if(isAlive){
         $('#character').css('left', v*10) }
       }
+  });
+
+  var clearObjects = function() {
+    $('.falling_object').remove();
+  }
+
+  var stopGame = function(){
+    isAlive = false;
+    stopAllTimers();
+    clearObjects();
+    $('#control').attr('disabled','disabled');
+  }
+
+  var restartGame = function(){
+    isAlive = true;
+    stopAllTimers();
+    clearObjects();
+    startAllTimers();
+  }
+
+  $('#game_button').click(function(){
+    restartGame();
   });
   /*
   $(window).on('keydown', function(e){
