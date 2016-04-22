@@ -15,6 +15,10 @@ $(function(){
   var makeId = 0;
   var boundaryId = 0;
   var moveId = 0;
+  var scoreId = 0;
+  var currentScore = 0;
+
+
 
   var makeObject = function(){
 
@@ -69,6 +73,12 @@ $(function(){
 
   }
 
+  var increaseScore = function(){
+    currentScore++;
+
+    $('#current_score').html('<p>' + currentScore + '</p>');
+  }
+
 
   var stopTimer = function(timerId){
     clearInterval(timerId);
@@ -79,6 +89,7 @@ $(function(){
     stopTimer(makeId);
     stopTimer(boundaryId);
     stopTimer(moveId);
+    stopTimer(scoreId);
   }
 
 
@@ -86,6 +97,7 @@ $(function(){
     makeId = setInterval(makeObject, 1000);
     boundaryId = setInterval(checkBoundaries, 20);
     moveId = setInterval(moveObjects, 500);
+    scoreId = setInterval(increaseScore, 1000);
   }
 
 
@@ -107,18 +119,33 @@ $(function(){
     isAlive = false;
     stopAllTimers();
     clearObjects();
-    $('#control').attr('disabled','disabled');
+    console.log("current high score: ", localStorage.getItem('highScore'));
+    if(localStorage.getItem('highScore') !== null){
+      if(localStorage.getItem('highScore') < currentScore){
+        localStorage.setItem('highScore', currentScore);
+      }
+    }else {
+      console.log("set high score for first time");
+      localStorage.setItem('highScore', currentScore);
+    }
+    $('#control').prop('disabled',true);
   }
 
   var restartGame = function(){
     isAlive = true;
+    currentScore = 0;
+    $('#current_score').html('<p>' + currentScore + '</p>');
     stopAllTimers();
     clearObjects();
     startAllTimers();
+    $('#control').prop('value', '25');
+    $('#control').prop('data-readOnly',false);
+
   }
 
   $('#game_button').click(function(){
     restartGame();
+
   });
   /*
   $(window).on('keydown', function(e){
