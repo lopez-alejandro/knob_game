@@ -28,7 +28,7 @@ $(function(){
           };
           objects.push(newObject);
           */
-    $('#game_container').append("<div class='falling_object' id="+counter + " ></div>");
+    $('#game_container').append("<div class='falling_object' id="+counter + " ><img src='images/kanye_1.png' style='width: 25px;'></div>");
     $("#" + counter +"").css('left', x);
     $("#" +counter +"").css('top', 200);
     counter++;
