@@ -13,12 +13,15 @@
 }
 
 #control_div {
-/*  position: absolute;
-  left:300px;
-  top:100px;*/
-  border-left: 3px solid black;
+  position: relative;
+  top:100px;
   text-align: center;
 }
+
+#control_column {
+    border-left: 3px solid black;
+}
+
 
 .falling_object {
   background-color: yellow;
