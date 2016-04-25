@@ -22,7 +22,7 @@ $(function(){
 
   var makeObject = function(){
 
-    var x = Math.random() * 500;
+    var x = Math.random() * 875;
 
     /*
           var newObject = {
@@ -34,7 +34,7 @@ $(function(){
           */
     $('#game_container').append("<div class='falling_object' id="+counter + " ><img src='images/kanye_1.png' style='width: 25px;'></div>");
     $("#" + counter +"").css('left', x);
-    $("#" +counter +"").css('top', 200);
+    $("#" +counter +"").css('top', 150);
     counter++;
 
   }
@@ -56,7 +56,7 @@ $(function(){
 
       var charLeft = $('#character').css('left');
       charLeft = parseInt(charLeft);
-      if(curBot >= 500 && (curLeft >= charLeft && curLeft <= charLeft + 100)){
+      if(curBot >= 500 && (curLeft + 25 >= charLeft && curLeft <= charLeft + 93)){
         // collision
         if (!$(this).hasClass('deleted')) {
           // stop the game now
@@ -138,7 +138,7 @@ $(function(){
     stopAllTimers();
     clearObjects();
     startAllTimers();
-    $('#control').prop('value', '25');
+    $('#control').prop('value', '38');
     $('#control').prop('data-readOnly',false);
 
   }
