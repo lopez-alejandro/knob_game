@@ -1,4 +1,20 @@
 
+h1{
+  text-align: center;
+  margin-left: 20px;
+  font-size: 48px;
+
+}
+
+p {
+
+  font-size: 35px;
+}
+
+#control_div > p {
+  color: black;
+  font-size: 35px;
+}
 
 
 #current_score {
@@ -11,8 +27,7 @@
   display: block;
   width: 100px;
   height: 50px;
-  border: 1px black solid;
-  background-color: red;
+  background: transparent;
   position: absolute;
   top: 500px;
   left: 300px;
@@ -25,13 +40,15 @@
   text-align: center;
 }
 
+
 #control_column {
     border-left: 3px solid black;
+    background-color: #eee;
+
 }
 
 
 .falling_object {
-  background-color: yellow;
   width: 25px;
   height: 50px;
   position: absolute;
@@ -42,8 +59,24 @@
   height: 100%;
 }
 
+#game_container{
+  background-color: #ccc;
+  background: rgba(220,220,220,0.7);
+  height: 100%;
+}
+
+#main_container{
+  display: block;
+  margin: auto;
+  width: 980px;
+  height: 100%;
+}
+
 .row {
   height: 100%;
+  width: 100%;
+  border: 2px black solid
+
 }
 
 html {
@@ -52,10 +85,15 @@ html {
 }
 
 body {
+  background-image: url(http://ell.h-cdn.co/assets/16/08/980x490/landscape-1456341917-gettyimages-90713093.jpg);
+  background-size: 100% 100%;
+
+  color: white;
   width: 100%;
   height: 100%;
   padding: 0px;
   margin: 0px;
+  overflow: hidden;
 }
 
 #game_button {
@@ -64,4 +102,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  border: none;
+  background-color: #00BFFF;
 }

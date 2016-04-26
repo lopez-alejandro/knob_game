@@ -18,11 +18,19 @@ $(function(){
   var scoreId = 0;
   var currentScore = 0;
 
+  if(sessionStorage.getItem('newUser') == null){
+    // new user, display welcome message and instructions
+    $('#game_container').append('<h1>Welcome!</h1><h1>Put your mouse over the circle one the right and scroll to move Taylor</h1>');
+    sessionStorage.setItem('newUser', true);
+  }
+
 
 
   var makeObject = function(){
+    var width = $('#game_container').width();
+    width = parseInt(width);
 
-    var x = Math.random() * 500;
+    var x = Math.random() * width;
 
     /*
           var newObject = {
@@ -128,6 +136,7 @@ $(function(){
       console.log("set high score for first time");
       localStorage.setItem('highScore', currentScore);
     }
+    $('#control_div').find('p').html("High Score: " + localStorage.getItem('highScore'));
     $('#control').prop('disabled',true);
   }
 
