@@ -17,6 +17,7 @@ $(function(){
   var moveId = 0;
   var scoreId = 0;
   var currentScore = 0;
+  var width = 0;
 
   if(sessionStorage.getItem('newUser') == null){
     // new user, display welcome message and instructions
@@ -27,8 +28,7 @@ $(function(){
 
 
   var makeObject = function(){
-    var width = $('#game_container').width();
-    width = parseInt(width);
+
 
     var x = Math.random() * width;
 
@@ -122,6 +122,7 @@ $(function(){
 
   var clearObjects = function() {
     $('.falling_object').remove();
+
   }
 
   var stopGame = function(){
@@ -142,12 +143,14 @@ $(function(){
   }
 
   var restartGame = function(){
-
+    width = $('#game_container').width();
+    width = parseInt(width);
     isAlive = true;
     currentScore = 0;
+    counter = 0;
     $('#current_score').html('<p>' + currentScore + '</p>');
-    stopAllTimers();
     clearObjects();
+    stopAllTimers();
     startAllTimers();
     $('#control').prop('value', '38');
     $('#control').prop('data-readOnly',false);
