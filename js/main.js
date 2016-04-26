@@ -20,7 +20,7 @@ $(function(){
 
   if(sessionStorage.getItem('newUser') == null){
     // new user, display welcome message and instructions
-    $('#game_container').append('<h1>Welcome!</h1><h1>Put your mouse over the circle one the right and scroll to move Taylor</h1>');
+    $('#game_container').append('<h1 class="welcome">Welcome!</h1><h1 class="welcome">Put your mouse over the circle on the right and scroll to move Taylor</h1>');
     sessionStorage.setItem('newUser', true);
   }
 
@@ -142,6 +142,7 @@ $(function(){
   }
 
   var restartGame = function(){
+
     isAlive = true;
     currentScore = 0;
     $('#current_score').html('<p>' + currentScore + '</p>');
@@ -150,7 +151,7 @@ $(function(){
     startAllTimers();
     $('#control').prop('value', '38');
     $('#control').prop('data-readOnly',false);
-
+    $('.welcome').remove();
   }
 
   $('#game_button').click(function(){
