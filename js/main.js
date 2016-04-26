@@ -138,6 +138,7 @@ $(function(){
       console.log("set high score for first time");
       localStorage.setItem('highScore', currentScore);
     }
+    $('#game_container').append('<h1 class ="welcome">GAME OVER!</h1>');
     $('#control_div').find('p').html("High Score: " + localStorage.getItem('highScore'));
     $('#control').prop('disabled',true);
   }
